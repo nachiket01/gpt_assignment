@@ -83,7 +83,7 @@ async def prompt():
     return final_question
     '''
     def pass_question(final_question):
-        openai.api_key = "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"
+        openai.api_key = ""
         completion = openai.Completion.create(
             model='text-davinci-003',
             prompt=final_question,
