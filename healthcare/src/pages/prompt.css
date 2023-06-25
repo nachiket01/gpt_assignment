@@ -1,0 +1,103 @@
+.app{
+    display: flex;
+    justify-content: center;
+    height: auto; 
+    padding: 10px;  
+     
+    border-radius: 10px;
+}
+    body, div, h1, form, input, p { 
+    padding: 0;
+    margin: 0;
+   padding-top: 5px;
+    outline: none;
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 16px;
+    color: #666;
+    }
+
+    h1{
+        font-size:22px;
+    }
+  
+    .main {
+    max-width: 680px; 
+    height: auto; 
+    
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 20px;
+    border-radius: 5px; 
+    border: solid 1px #ccc;
+    box-shadow: 1px 15px 20px rgba(0,0,0,.70); 
+    background: #ebebeb; 
+    }
+    form {
+    margin: 0 30px;
+    }
+  
+    .question{
+        width:350;
+        text-align: center;
+        height: 40px;
+        margin: 13px 0 0 -5px;
+        padding: 5px; 
+        border-radius: 0 5px 5px 0;
+        border: solid 1px #cbc9c9; 
+        box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+        background: #fff; 
+        margin-bottom: 10px;
+           
+    }
+
+    input[type="text"]{
+        width:100%;
+        text-align: center;
+        height: 45px;
+        padding-left: 0px; 
+        border-radius: 0 5px 5px 0;
+        background: white; 
+        margin-bottom: 10px;
+        
+    }
+    .ansArea{
+        padding:10px;
+        width:98.5%;
+        text-align: justify;
+        height: auto;
+        margin: 13px 0 0 -5px;
+        border-radius: 0 5px 5px 0;
+        border: solid 1px #cbc9c9; 
+        box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+        background: #fff; 
+        margin-bottom: 10px;
+        white-space:pre-wrap;
+    }
+
+
+    .loading {
+        position: relative;
+        width: 95%;
+      }
+      
+      .loading::after {
+        content: 'Loading...';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: loadingAnimation 1s infinite;
+      }
+      
+      @keyframes loadingAnimation {
+        0% {
+          opacity: 0.4;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0.4;
+        }
+      }
+      
