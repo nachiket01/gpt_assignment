@@ -1,10 +1,9 @@
 from typing import Union
-
 from fastapi import FastAPI
-import json
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-
+import csv
+import json
 import openai
 
 app = FastAPI()
@@ -30,10 +29,10 @@ class Data(BaseModel):
     height:str | None = None
     weight:str | None = None
     a1c:str    | None = None
+    bp:str     | None = None
     medicine:str | None = None
 
 
-import json
 @app.post("/")
 async def data(data : Data):
     dict_obj = {
@@ -44,8 +43,17 @@ async def data(data : Data):
             "height":data.height,
             "weight":data.weight,
             "a1c":data.a1c,
+            "bp":data.bp,
             "medicine":data.medicine,
                 }
+    field_names = ['name','dob','race','gender','height','weight','a1c','bp','medicine']
+
+
+    with open('all_user_data.csv', 'a') as f_object:
+        dictwriter_object = csv.DictWriter(f_object, fieldnames=field_names)
+        dictwriter_object.writerow(dict_obj)
+        f_object.close()
+
     with open('user_data.json','w') as fp:
         json.dump(dict_obj, fp)
     return data
@@ -65,13 +73,12 @@ async def get_question(que : Ques):
 
 
 @app.get("/prompt")
-
 async def prompt():
     
     with open('questions.json','r') as fp:
         questions = json.load(fp)
-    fp = open('questions.json', 'w')
-    fp.close()
+        fp = open('questions.json', 'w')
+        fp.close()
 
     with open("user_data.json") as fp:
         data = json.load(fp)
@@ -79,7 +86,7 @@ async def prompt():
     user_data = data['medicine']
 
     final_question = f"my prescription is {user_data} and my question is {questions} explain in points"
-
+    '''
     return final_question
     '''
     def pass_question(final_question):
@@ -97,4 +104,4 @@ async def prompt():
         return response
 
     return pass_question(final_question)
-    '''
+    
